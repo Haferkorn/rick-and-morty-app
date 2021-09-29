@@ -1,7 +1,7 @@
 
 import './App.css';
-import CharacterCard from "./Components/CharacterCard";
-import Header from "./Components/Header";
+import CharacterCard from "./Components/Body/CharacterCard";
+import Header from "./Components/Header/Header";
 import characterResponse from "./Data/character-response.json"
 
 function App() {
