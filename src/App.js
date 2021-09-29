@@ -6,7 +6,7 @@ function App() {
     const name="Anette"
   return (
     <div className="App">
-        <Header title="Rick and Morty API"/>
+        <Header title="Rick and Morty API - Galery" subtitle="Anette Haferkorn"/>
     </div>
   );
 }

@@ -1,15 +1,26 @@
-.header{
+* {
+    margin: 0
+}
+.header__flex_container{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-}
 
+}
 .header__image{
     width:40px;
 }
 
 .header__title{
-    margin-left: 15px;
+    margin: 0 0 0 15px;
+    font-family: 'Shadows Into Light', cursive;
+}
+.header__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header__subtitle{
+    /*margin: 0;*/
     font-family: 'Shadows Into Light', cursive;
 }
