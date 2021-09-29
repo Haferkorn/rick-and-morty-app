@@ -1,0 +1,15 @@
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.header__image{
+    width:40px;
+}
+
+.header__title{
+    margin-left: 15px;
+    font-family: 'Shadows Into Light', cursive;
+}
