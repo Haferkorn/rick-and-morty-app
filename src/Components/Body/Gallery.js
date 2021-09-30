@@ -1,5 +1,5 @@
 import CharacterCard from "./CharacterCard";
-import "./Body.css"
+import "./Galery.css"
 
 function Gallery(props){
     return(
