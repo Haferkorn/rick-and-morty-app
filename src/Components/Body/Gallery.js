@@ -1,7 +1,7 @@
 import CharacterCard from "./CharacterCard";
 import "./Body.css"
 
-function Body(props){
+function Gallery(props){
     return(
         <div className="card__Container">
             <CharacterCard character={props.characters[0]}/>
@@ -11,4 +11,4 @@ function Body(props){
 
         </div>
     )
-}export default Body
+}export default Gallery

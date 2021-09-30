@@ -3,7 +3,7 @@ import './App.css';
 import CharacterCard from "./Components/Body/CharacterCard";
 import Header from "./Components/Header/Header";
 import characterResponse from "./Data/character-response.json"
-import Body from "./Components/Body/Body";
+import Gallery from "./Components/Body/Gallery";
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
         <Header title="Rick and Morty API - Galery" subtitle="Anette Haferkorn"/>
-        <Body characters={characters}/>
+        <Gallery characters={characters}/>
     </div>
   );
 }
