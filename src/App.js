@@ -8,16 +8,25 @@ import {fetchCharacters} from "./services/rick-and-morty-ap-service";
 
 function App() {
 
-    const [characters, setcharacters]=useState([])
-    const[page, setPage]=useState(1)
+    const[characters, setcharacters]=useState([])
+    const[nextPageUrl, setnextPageUrl]=useState();
+    const[prevPageURL,setPrevPageUrl]=useState();
+
+    const startUrl="https://rickandmortyapi.com/api/character"
+
+    const getCharactersFromApi=(url)=>{
+        fetchCharacters(url)
+            .then(response =>{
+                setnextPageUrl(response.info.next)
+                setPrevPageUrl(response.info.prev)
+                setcharacters(response.results)
+            })
+            .catch(error => console.log("Error"))
+    }
 
     useEffect(()=>{
-
-        fetchCharacters(page)
-            .then(characters=>setcharacters(characters))
-            .catch(error => console.log("Error"))
-
-    },[page])
+        getCharactersFromApi(startUrl)
+    },[])
 
 
     const handleSearch = (event) => {
@@ -29,17 +38,16 @@ function App() {
         ));
     }
     const handlePreviousPage=()=>{
-        if(page>=2){
-            setPage(page-1)
+        if(prevPageURL!=null){
+            getCharactersFromApi(prevPageURL)
         }
+
     }
 
     const handleNextPage=()=>{
-        if(page<34){
-            setPage(page+1)
+        if(nextPageUrl!=null){
+            getCharactersFromApi(nextPageUrl)
         }
-
-
     }
 
 
@@ -47,8 +55,8 @@ function App() {
     <div className="App">
         <Header title="Rick and Morty API - Galery" subtitle="Anette Haferkorn"/>
         <div className="button__container">
-            <button onClick={handlePreviousPage}>Previous</button>
-            <button onClick={handleNextPage}>Next</button>
+            <button onClick={handlePreviousPage} disabled={prevPageURL==null}>Previous</button>
+            <button onClick={handleNextPage} disabled={nextPageUrl==null}>Next</button>
             <input type="text" onChange={handleSearch} placeholder="Search for Character Name:"/>
         </div>
         <Gallery characters={characters}/>

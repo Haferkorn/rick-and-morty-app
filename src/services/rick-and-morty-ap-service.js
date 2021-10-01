@@ -1,6 +1,5 @@
-export const fetchCharacters= (page)=>{
-    return fetch("https://rickandmortyapi.com/api/character/?page="+page)
+export const fetchCharacters= (url)=>{
+    return fetch(url)
         .then(response =>response.json())
-        .then(page => page.results)
 
 }
