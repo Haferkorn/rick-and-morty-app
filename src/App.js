@@ -13,7 +13,6 @@ function App() {
 
     const [characters, setcharacters]=useState([])
 
-
     const loadAllCharacters=()=>{
         setcharacters(characterResponse.results)
     }
@@ -37,10 +36,12 @@ function App() {
     return (
     <div className="App">
         <Header title="Rick and Morty API - Galery" subtitle="Anette Haferkorn"/>
-        <button onClick={loadAllCharacters}>Load All Characters</button>
-        <button onClick={loadRandomCharacter}>Load Random Characters</button>
-        <input type="text" onChange={handleSearch} />
-        <button onClick={clearAllCharacters}>Clear All</button>
+        <div className="button__container">
+            <button onClick={loadAllCharacters}>Load All Characters</button>
+            <button onClick={loadRandomCharacter}>Load Random Characters</button>
+            <input type="text" onChange={handleSearch} placeholder="Search for Character Name:"/>
+            <button onClick={clearAllCharacters}>Clear All</button>
+        </div>
         <Gallery characters={characters}/>
     </div>
   );
