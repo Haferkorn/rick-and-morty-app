@@ -32,12 +32,7 @@ function App() {
                 .includes(search.toLowerCase())
         ));
     }
-    /*
-    function handleChangeonSpeciesState(evt) {
-        const value = evt.target.type === "checkbox" ? evt.target.checked : evt.target.value;
-        setSpecies({...species, [evt.target.name]: value});
-        }
-   */
+
 
     return (
     <div className="App">
@@ -45,8 +40,6 @@ function App() {
         <button onClick={loadAllCharacters}>Load All Characters</button>
         <button onClick={loadRandomCharacter}>Load Random Characters</button>
         <input type="text" onChange={handleSearch} />
-        <input type="checkbox" name="Human" checked={species.Human} onChange={handleChangeonSpeciesState}/>Human
-        <input type="checkbox" name="Alien" checked={species.Alien} onChange={handleChangeonSpeciesState}/>Alien
         <button onClick={clearAllCharacters}>Clear All</button>
         <Gallery characters={characters}/>
     </div>
