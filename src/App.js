@@ -4,7 +4,8 @@ import CharacterCard from "./Components/Body/CharacterCard";
 import Header from "./Components/Header/Header";
 import characterResponse from "./Data/character-response.json"
 import Gallery from "./Components/Body/Gallery";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {fetchCharacters} from "./services/rick-and-morty-ap-service";
 
 
 function App() {
@@ -12,6 +13,15 @@ function App() {
     //const characters=characterResponse.results;
 
     const [characters, setcharacters]=useState([])
+
+    useEffect(()=>{
+
+        fetchCharacters()
+            .then(characters=>setcharacters(characters))
+            .catch(error => console.log("Error"))
+
+    },[])
+
 
     const loadAllCharacters=()=>{
         setcharacters(characterResponse.results)
