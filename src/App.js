@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import {fetchCharacters} from "./services/rick-and-morty-ap-service";
 
 
+
 function App() {
 
     const[characters, setCharacters]=useState([])
@@ -50,7 +51,6 @@ function App() {
     }
 
 
-
     return (
     <div className="App">
         <Header title="Rick and Morty API - Galery" subtitle="Anette Haferkorn"/>
@@ -63,5 +63,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
