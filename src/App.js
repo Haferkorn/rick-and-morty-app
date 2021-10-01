@@ -8,7 +8,7 @@ import {fetchCharacters} from "./services/rick-and-morty-ap-service";
 
 function App() {
 
-    const[characters, setcharacters]=useState([])
+    const[characters, setCharacters]=useState([])
     const[nextPageUrl, setnextPageUrl]=useState();
     const[prevPageURL,setPrevPageUrl]=useState();
 
@@ -17,9 +17,9 @@ function App() {
     const getCharactersFromApi=(url)=>{
         fetchCharacters(url)
             .then(response =>{
+                setCharacters(response.results)
                 setnextPageUrl(response.info.next)
                 setPrevPageUrl(response.info.prev)
-                setcharacters(response.results)
             })
             .catch(error => console.log("Error"))
     }
@@ -31,7 +31,7 @@ function App() {
 
     const handleSearch = (event) => {
         const search = event.target.value;
-        setcharacters(characters.filter((character) =>
+        setCharacters(characters.filter((character) =>
             character.name
                 .toLowerCase()
                 .includes(search.toLowerCase())
@@ -41,7 +41,6 @@ function App() {
         if(prevPageURL!=null){
             getCharactersFromApi(prevPageURL)
         }
-
     }
 
     const handleNextPage=()=>{
@@ -51,12 +50,13 @@ function App() {
     }
 
 
+
     return (
     <div className="App">
         <Header title="Rick and Morty API - Galery" subtitle="Anette Haferkorn"/>
         <div className="button__container">
-            <button onClick={handlePreviousPage} disabled={prevPageURL==null}>Previous</button>
-            <button onClick={handleNextPage} disabled={nextPageUrl==null}>Next</button>
+            {prevPageURL==null ? <p>There is no previous page</p> : <button onClick={handlePreviousPage} >Previous</button>}
+            {nextPageUrl==null ? <p>There is no next page</p> : <button onClick={handleNextPage} >Next</button>}
             <input type="text" onChange={handleSearch} placeholder="Search for Character Name:"/>
         </div>
         <Gallery characters={characters}/>
